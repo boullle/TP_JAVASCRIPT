@@ -7,14 +7,18 @@ function mettrePremiereLettreEmajuscule(phraseAmodifier){
 
 for (let index = 0; index < tableauDeMots.length; index++) {
     let motAmodifie = tableauDeMots[index];
+    console.log(motAmodifie);
     let motModifie = motAmodifie.charAt(0).toUpperCase()+motAmodifie.slice(1); 
     phraseModifie = phraseModifie + motModifie + " ";
+    console.log(motModifie);
 }
+return phraseModifie;
 }
 
 //execution
 let phrase = "bonjour je suis jean-jacques";
 let phraseTraite = mettrePremiereLettreEmajuscule(phrase);
 console.log(phrase);
+console.log('\n=================================================\n');
 console.log(phraseTraite);
 
