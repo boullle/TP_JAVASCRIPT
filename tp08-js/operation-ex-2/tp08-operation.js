@@ -9,26 +9,23 @@ function valider() {
     
     if (!Number.isNaN(nombre_1) && !Number.isNaN(nombre_2)) {
         let resultat;
+        afficheErreur.innerHTML = "";
         if (selecteurElement.value==='additionner') {
             resultat= nombre_1+nombre_2;
             const afficheResultat= document.querySelector('#resultat');
             afficheResultat.innerHTML = "Le résultat de l’addition est : "+resultat;
-            afficheErreur.innerHTML = "";
         }else if (selecteurElement.value==='soustraire') {
             resultat= nombre_1-nombre_2;
             const afficheResultat= document.querySelector('#resultat');
             afficheResultat.innerHTML = "Le résultat de la soustraction est : "+resultat;
-            afficheErreur.innerHTML = "";
         }else if (selecteurElement.value==='multiplier') {
             resultat= nombre_1*nombre_2;
             const afficheResultat= document.querySelector('#resultat');
             afficheResultat.innerHTML = "Le résultat de la multiplication est : "+resultat;
-            afficheErreur.innerHTML = "";
         }else if (selecteurElement.value==='diviser') {
             resultat= nombre_1/nombre_2;
             const afficheResultat= document.querySelector('#resultat');
             afficheResultat.innerHTML = "Le résultat de la division est : "+resultat;
-            afficheErreur.innerHTML = "";
         }else if(selecteurElement.value==='off'){
             afficheErreur.innerHTML="Veuillez choisir un opérateur de calcul";
         }
