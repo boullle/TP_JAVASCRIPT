@@ -5,28 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        // function init(){
-        //     let req=new XMLHttpRequest();
-        //     req.open('GET','https://restcountries.com/v2/all?fields=name,languages,region,flag,population,currencies,capital');
-        //     req.onreadystatechange = function(){
-        //         console.log("ready stat changed:"+req.readyState);
-        //         if(req.readyState==4&&req.status==200){
-        //             console.log("Données obtenues")
-        //             //let data=req.responseText;
-        //             let data=JSON.parse(req.responseText);
-        //             console.log(data);
-        //             let zoneAffichage=document.querySelector("#resultat");
-        //             let affichage= "";
-        //             for (let index = 0; index < data.length; index++) {
-        //                 affichage = affichage + data[index].name;                        
-        //             }
-        //             zoneAffichage.innerHTML = affichage;
-                    
-        //         }
-        //     }
-        //     req.send();
-        // }
-
+       
          function init(){
             fetch('https://restcountries.com/v2/all?fields=name,languages,region,flag,population,currencies,capital')
             // .then(function(res) {

@@ -10,7 +10,7 @@
             req.open('GET','https://restcountries.com/v2/all?fields=name,languages,region,flag,population,currencies,capital');
             req.onreadystatechange = function(){
                 console.log("ready stat changed:"+req.readyState);
-                if(req.readyState==4&&req.status==200){
+                if(req.readyState == 4  &&  req.status == 200){
                     console.log("Données obtenues")
                     let data=req.responseText;
                     //let data=JSON.parse(req.responseText);

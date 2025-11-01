@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <script>
+       
+         function init(){
+            fetch('https://restcountries.com/v2/all?fields=name,languages,region,flag,population,currencies,capital')
+            // .then(function(res) {
+            //     //console.log(res);
+            //     //on peut verifier le status de la reponse ici.
+            //     return res.text();// génère une nouvelle promesse.
+            // })
+            .then(function(res){
+                return res.json();
+            })
+            // .then(function (bodyText) {
+            //     console.log(bodyText);
+            // })
+            
+            .then(function(body) {
+                console.log(body);
+                 let affichage=`<table id="monTableau"><thead><tr><th>Nom</th><th>Capitale</th><th>Population<i class="fa fa-angle-down" id="asc" style="font-size:36px" onclick='trierColonne(2,"asc")'></i><i class="fa fa-angle-up" id="desc" style="font-size:36px" onclick='trierColonne(2,"desc")'></i><i class="fa fa-refresh" id="nonTrie" style="font-size:24px;color:red" onclick='init()'></i></th><th>Région</th></tr></thead>`;
+                 console.log(affichage);
+                    for (let index = 0; index < body.length; index++) {
+                        //affichage = affichage + body[index].name;
+                        affichage =affichage + '<tbody><tr><td>'+body[index].name+'</td><td>'+body[index].capital+'</td><td>'+body[index].population+'</i></i></td><td>'+body[index].region+'</td></tr></tbody>';  
+                    }
+                    affichage = affichage + '</table>';
+                    let zoneAffichage=document.querySelector("#resultat");
+                    zoneAffichage.innerHTML = affichage;
+                // let zoneAffichage=document.querySelector("#resultat");
+                // zoneAffichage.innerHTML=body;
+            });
+        
+         }
+             
+        
+
+        
+        function trierColonne(index,dir) {
+        var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
+        table = document.getElementById("monTableau");
+        switching = true;
+        console.log(dir);
+
+        // Boucle pour continuer jusqu'à ce que le tri soit terminé
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+
+            // Parcours des lignes du tableau
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[index];
+                y = rows[i + 1].getElementsByTagName("TD")[index];
+
+                // Vérifier si les lignes doivent être échangées
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                // Échanger les lignes
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount++;
+            }
+            
+            // else {
+            //     // Inverser la direction si aucune ligne n'a été échangée
+            //     if (switchcount == 0 && dir == "asc") {
+            //         dir = "desc";
+            //         switching = true;
+            //     }
+            // }
+        }
+        //recuperer les elements bouton de tri
+        const boutonTrieAscendant = document.getElementById("asc");
+        const boutonTrieDescendant = document.getElementById("desc");
+        const boutonNonTire = document.getElementById("nonTrie");
+        //Passer le bouton tri ascendant à rouge les autres à blanc
+        if(dir=="asc") {
+            boutonTrieAscendant.style.color = "red";
+            boutonTrieDescendant.style.color = "white";
+            boutonNonTire.style.color = "white"
+        }
+        //Passer le bouton tri descendant à rouge les autres à blanc
+        if(dir=="desc") {
+            boutonTrieAscendant.style.color = "white";
+            boutonTrieDescendant.style.color = "red";
+            boutonNonTire.style.color = "white"
+        }
+           
+    }
+    </script>
+</head>
+<body onload="init()">
+
+<!--<body>  -->
+   <span id="resultat"></span>
+
+</body>
+</html>

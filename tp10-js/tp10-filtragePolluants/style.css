@@ -1,0 +1,13 @@
+/*tr>th{
+    background-color:blue;
+    color:white;
+}*/
+table, th, td{
+    border:1px black ;
+    border-width: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+    }
+/*/tr:nth-child(even){
+    background-color: lightblue;
+}*/
