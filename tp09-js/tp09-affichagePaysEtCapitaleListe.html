@@ -43,7 +43,7 @@
 
         
         function trierColonne(index,dir) {
-        var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
+        let table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
         table = document.getElementById("monTableau");
         switching = true;
         console.log(dir);
@@ -58,15 +58,16 @@
                 shouldSwitch = false;
                 x = rows[i].getElementsByTagName("TD")[index];
                 y = rows[i + 1].getElementsByTagName("TD")[index];
+                //console.log(typeof x, x.value);
 
                 // Vérifier si les lignes doivent être échangées
                 if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    if (Number.parseInt(x.innerHTML,10) > Number.parseInt(y.innerHTML)) {
                         shouldSwitch = true;
                         break;
                     }
                 } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    if (Number.parseInt(x.innerHTML,10)  < Number.parseInt(y.innerHTML)) {
                         shouldSwitch = true;
                         break;
                     }
@@ -79,13 +80,6 @@
                 switchcount++;
             }
             
-            // else {
-            //     // Inverser la direction si aucune ligne n'a été échangée
-            //     if (switchcount == 0 && dir == "asc") {
-            //         dir = "desc";
-            //         switching = true;
-            //     }
-            // }
         }
         //recuperer les elements bouton de tri
         const boutonTrieAscendant = document.getElementById("asc");
